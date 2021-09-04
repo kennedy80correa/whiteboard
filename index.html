@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Whiteboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="tools">
+        <label for="sizes">Size:</label>
+
+        <select name="sizes" class="sizes">
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+
+      <div class="tools">
+        <label for="colors">Colors:</label>
+
+        <div class="buttons">
+          <button class="black" value="#000"></button>
+          <button class="red"></button>
+          <button class="green"></button>
+          <button class="blue"></button>
+          <button class="yellow"></button>
+          <input type="color" name="custom" class="custom" />
+        </div>
+      </div>
+    </header>
+
+    <canvas class="whiteboard"></canvas>
+  </body>
+</html>
