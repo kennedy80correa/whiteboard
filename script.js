@@ -1,18 +1,33 @@
-let canvas = document.getElementById("canvas");
-let test = document.getElementBuId("test");
+window.addEventListener("load", () => {
+    const canvas = document.querySelector("#canvas");
+    const ctx = canvas.getContext("2d");
 
-canvas.width = 1300;
-canvas.height = 800;
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth
 
-let ctx = canvas.getContext("2d");
+    let painting = false;
 
-let x;
-let y;
+    function startPosition(e) {
+        painting = true;
+        draw(e);
+    }
+    function finishedPosition() {
+        painting = false;
+        ctx.beginPath();
+    }
 
-window.onmousemove = (e) => {
-    x = e.clientX;
-    y = e.clientY;
+    function draw(e) {
+        if(!painting) return;
+        ctx.lineWidth = 1;
+        ctx.lineCap = "round";
 
-    ctx.lineTo(x, y);
-    ctx.stroke();
-};
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(e.clientX, e.clientY);
+    }
+
+    canvas.addEventListener("mousedown", startPosition);
+    canvas.addEventListener("mouseup", finishedPosition);
+    canvas.addEventListener("mousemove", draw);
+})
