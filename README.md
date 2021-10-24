@@ -4,8 +4,10 @@ Figma prototype: https://www.figma.com/proto/0WG5dzQCg4o3MYyhnWhO2x/Schedule?nod
 
 # instruções para execução
 
-primeiramente, precisamos instalar socket.io:
+Primeiramente, precisamos instalar socket.io:
 
 npm install socket.io
 
 após a instalação, já é possível executar o código.
+
+Recomendado utilizar o VSCode.
