@@ -1,37 +1,15 @@
-let express = require("express");
-let app = express();
-let httpServer = require("http").createServer(app);
-let io = require("socket.io")(httpServer);
+const express = require("express");
+const app = express();
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+const port = process.env.PORT || 8080;
 
-let connections = [];
+app.use(express.static(__dirname + "/public"));
 
-io.on("connect", (socket) => {
-  connections.push(socket);
-  console.log(`${socket.id} has connected`);
+function onConnection(socket) {
+  socket.on("drawing", (data) => socket.broadcast.emit("drawing", data));
+}
 
-  socket.on("draw", (data) => {
-    connections.forEach((con) => {
-      if (con.id !== socket.id) {
-        con.emit("ondraw", { x: data.x, y: data.y });
-      }
-    });
-  });
+io.on("connection", onConnection);
 
-  socket.on("down", (data) => {
-    connections.forEach((con) => {
-      if (con.id !== socket.id) {
-        con.emit("ondown", { x: data.x, y: data.y });
-      }
-    });
-  });
-
-  socket.on("disconnect", (reason) => {
-    console.log(`${socket.id} is disconnected`);
-    connections = connections.filter((con) => con.id !== socket);
-  });
-});
-
-app.use(express.static("public"));
-
-let PORT = process.env.PORT || 8080;
-httpServer.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+http.listen(port, () => console.log("listening on port " + port));
