@@ -1,4 +1,4 @@
-# Whiteboard Colaborativo
+# Whiteboard
 
 Whiteboard colaborativo simples, para usuários interagirem em tempo real. Todos desenhando numa mesma tela!
 
