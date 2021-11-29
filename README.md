@@ -1,13 +1,15 @@
-# whiteboard
+# Whiteboard Colaborativo
 
-Figma prototype: https://www.figma.com/proto/0WG5dzQCg4o3MYyhnWhO2x/Schedule?node-id=45%3A149
+Whiteboard colaborativo simples, para usuários interagirem em tempo real. Todos desenhando numa mesma tela!
 
-# instruções para execução
+## Para Utilizar Corretamente, execute os seguintes comandos:
 
-Primeiramente, precisamos instalar socket.io:
+```
+$ npm i
+```
+```
+$ npm run dev
+```
 
-npm install socket.io
+No seu browser, vá para o endereço `http://localhost:8080`. Se preferir, especifique uma porta alterando a variável `PORT`.
 
-após a instalação, já é possível executar o código.
-
-Recomendado utilizar o VSCode.
